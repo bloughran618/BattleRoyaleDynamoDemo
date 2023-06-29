@@ -6,6 +6,7 @@ dynamodb = boto3.client('dynamodb')
 
 MAP_NAME = "Green Grasslands"
 
+
 def find_open_games_by_map(map_name):
     resp = dynamodb.query(
         TableName='battle-royale',
@@ -23,6 +24,7 @@ def find_open_games_by_map(map_name):
     games = [Game(item) for item in resp['Items']]
 
     return games
+
 
 games = find_open_games_by_map(MAP_NAME)
 print("Open games for {}:".format(MAP_NAME))

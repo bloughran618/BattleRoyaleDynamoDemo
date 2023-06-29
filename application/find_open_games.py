@@ -4,6 +4,7 @@ from entities import Game
 
 dynamodb = boto3.client('dynamodb')
 
+
 def find_open_games():
     resp = dynamodb.scan(
         TableName='battle-royale',
@@ -13,6 +14,7 @@ def find_open_games():
     games = [Game(item) for item in resp['Items']]
 
     return games
+
 
 games = find_open_games()
 print("Open games:")

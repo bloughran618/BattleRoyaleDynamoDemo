@@ -9,6 +9,7 @@ dynamodb = boto3.client('dynamodb')
 GAME_ID = "c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
 CREATOR = "gstanley"
 
+
 def start_game(game_id, requesting_user, start_time):
     try:
         resp = dynamodb.update_item(
@@ -30,6 +31,7 @@ def start_game(game_id, requesting_user, start_time):
     except Exception as e:
         print('Could not start game')
         return False
+
 
 game = start_game(GAME_ID, CREATOR, datetime.datetime(2019, 4, 16, 10, 15, 35))
 
